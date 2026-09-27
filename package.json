@@ -1,0 +1,19 @@
+{
+  "name": "hatebu-veil",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "icons": "node scripts/generate-icons.mjs",
+    "test": "node --test tests/*.test.js",
+    "check": "node --check core/classifier.js && node --check core/filter-policy.js && node --check core/feedback.js && node --check adapters/hatena-bookmark.js && node --check extension/background.js && node --check extension/content-script.js && node --check popup/popup.js && node --check scripts/generate-icons.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  },
+  "description": "はてなブックマークのコメントをJevで判定するChrome拡張機能",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/honeshabri/hatebu-veil.git"
+  }
+}

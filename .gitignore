@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Local secrets and credentials
+.env
+.env.*
+*.pem
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs, temporary files, and caches
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+.cache/
+.tmp/
+tmp/
+*.tmp
+*.temp
+
+# Generated build output
+dist/
+build/
+coverage/
+*.crx
+
+# Local agent/tool state
+.codex/
+.claude/
+.kilo/
+.specstory/

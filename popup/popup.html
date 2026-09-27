@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hatebu Veil</title>
+    <link rel="stylesheet" href="popup.css">
+    <script src="../core/filter-policy.js" defer></script>
+    <script src="popup.js" defer></script>
+  </head>
+  <body>
+    <main class="popup">
+      <header class="header">
+        <img class="brand-mark" src="../assets/icons/icon-128.png" alt="" aria-hidden="true">
+        <div>
+          <h1>Hatebu Veil</h1>
+          <p class="subtitle">コメントフィルター</p>
+        </div>
+      </header>
+
+      <section class="section switch-section" aria-labelledby="filter-title">
+        <div class="setting-copy">
+          <h2 id="filter-title">自動フィルター</h2>
+          <p>はてなブックマークのコメントを判定します</p>
+        </div>
+        <button
+          id="enabled-toggle"
+          class="toggle"
+          type="button"
+          role="switch"
+          aria-checked="true"
+          aria-label="自動フィルター"
+          disabled
+        >
+          <span class="toggle-thumb" aria-hidden="true"></span>
+          <span class="toggle-label">ON</span>
+        </button>
+      </section>
+
+      <section class="section switch-section" aria-labelledby="score-title">
+        <div class="setting-copy">
+          <h2 id="score-title">判定スコアを表示</h2>
+          <p>コメントに攻撃性・有益さの判定値を表示します</p>
+        </div>
+        <button
+          id="score-toggle"
+          class="toggle"
+          type="button"
+          role="switch"
+          aria-checked="false"
+          aria-label="判定スコアを表示"
+          disabled
+        >
+          <span class="toggle-thumb" aria-hidden="true"></span>
+          <span class="toggle-label">OFF</span>
+        </button>
+      </section>
+
+      <section class="section filter-section" aria-labelledby="range-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="range-title">フィルター範囲と爆破傾向</h2>
+          </div>
+          <div class="reset-actions">
+            <button id="reset-filter" class="text-button" type="button" disabled>初期値</button>
+            <button id="reset-feedback" class="text-button" type="button" disabled>爆破履歴をリセット</button>
+          </div>
+        </div>
+
+        <div class="matrix-legend" aria-label="マトリクスの凡例">
+          <span class="legend-item">
+            <span class="legend-swatch legend-swatch-heat" aria-hidden="true"></span>
+            <span><strong>赤の濃淡</strong>：爆破率</span>
+          </span>
+          <span class="legend-item">
+            <span class="legend-swatch legend-swatch-filter" aria-hidden="true"></span>
+            <span><strong>青い内枠</strong>：自動フィルター</span>
+          </span>
+        </div>
+
+        <p id="current-page-stats" class="page-stats" role="status" aria-live="polite" title="非表示には、現在の自動フィルター条件に一致する爆破済みコメントも含みます">現在のページ: 確認中…</p>
+
+        <div class="matrix-axes" aria-label="マトリクスの軸">
+          <span>💡 有益さ →</span>
+          <span>💢 攻撃性 ↓</span>
+        </div>
+        <div
+          id="filter-matrix"
+          class="filter-matrix"
+          role="grid"
+          aria-label="攻撃性と有益さによるフィルター範囲"
+        ></div>
+        <p class="matrix-help">マスをクリックすると、矛盾しない階段状の範囲へ自動調整します。</p>
+      </section>
+
+      <section class="section key-section" aria-labelledby="key-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="key-title">OpenCode Zen APIキー</h2>
+            <p>キーはこのブラウザー内に保存されます</p>
+          </div>
+          <span id="key-status" class="key-status" aria-live="polite">確認中…</span>
+        </div>
+
+        <label class="visually-hidden" for="api-key">OpenCode Zen APIキー</label>
+        <input
+          id="api-key"
+          type="password"
+          name="api-key"
+          placeholder="APIキーを入力"
+          autocomplete="new-password"
+          autocapitalize="off"
+          spellcheck="false"
+          disabled
+        >
+
+        <div class="button-row">
+          <button id="save-key" class="button button-primary" type="button" disabled>キーを保存</button>
+          <button id="delete-key" class="button button-secondary" type="button" disabled>キーを削除</button>
+        </div>
+      </section>
+
+      <p id="error-message" class="error-message" role="alert" hidden></p>
+      <p id="notice-message" class="notice-message" aria-live="polite" hidden></p>
+    </main>
+  </body>
+</html>

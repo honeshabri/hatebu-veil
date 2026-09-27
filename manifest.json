@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Hatebu Veil",
+  "version": "0.1.0",
+  "minimum_chrome_version": "102",
+  "description": "はてなブックマークの攻撃的で情報価値の低いコメントを折り畳みます。",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://b.hatena.ne.jp/entry/*",
+    "https://opencode.ai/zen/v1/systemone"
+  ],
+  "background": {
+    "service_worker": "extension/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Hatebu Veil",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "assets/icons/icon-16.png",
+      "32": "assets/icons/icon-32.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://b.hatena.ne.jp/entry/*"
+      ],
+      "js": [
+        "core/filter-policy.js",
+        "adapters/hatena-bookmark.js",
+        "extension/content-script.js"
+      ],
+      "css": [
+        "extension/content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "32": "assets/icons/icon-32.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  }
+}

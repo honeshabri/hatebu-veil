@@ -1,0 +1,143 @@
+.hatebu-veil-hidden {
+  display: none !important;
+}
+
+.hatebu-veil-notice {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dfd6ad;
+  border-radius: 6px;
+  background: #fff9e5;
+  color: #453b22;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.hatebu-veil-notice strong,
+.hatebu-veil-notice span {
+  display: block;
+}
+
+.hatebu-veil-notice-score {
+  margin-top: 2px;
+  color: #735a45;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.hatebu-veil-score {
+  display: inline-flex;
+  align-items: center;
+  min-height: 27px;
+  margin-right: 6px;
+  padding: 0 7px;
+  border-radius: 5px;
+  background: #f3f5f7;
+  color: #5f6875;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.hatebu-veil-score[hidden] {
+  display: none !important;
+}
+
+.hatebu-veil-exploding {
+  animation: hatebu-veil-explode-out 380ms ease-in forwards;
+  transform-origin: left center;
+}
+
+@keyframes hatebu-veil-explode-out {
+  0% { opacity: 1; transform: scale(1); }
+  25% { opacity: 0.95; transform: scale(1.015); }
+  100% { opacity: 0; transform: scale(0.96); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hatebu-veil-exploding { animation: none; }
+}
+
+.hatebu-veil-notice button {
+  margin-top: 8px;
+  padding: 4px 10px;
+  border: 1px solid #756747;
+  border-radius: 4px;
+  background: #fff;
+  color: #332a18;
+  font: inherit;
+  cursor: pointer;
+}
+
+.hatebu-veil-notice button:focus-visible {
+  outline: 2px solid #1260b0;
+  outline-offset: 2px;
+}
+
+.hatebu-veil-notice-exploded {
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  max-width: 100%;
+  min-height: 30px;
+  gap: 9px;
+  padding: 4px 8px;
+  border: 0;
+  border-left: 3px solid #cbd2db;
+  border-radius: 0 4px 4px 0;
+  background: #f3f5f7;
+  color: #414752;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.hatebu-veil-notice-exploded strong {
+  display: inline;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.hatebu-veil-notice-exploded button {
+  margin: 0;
+  padding: 3px 8px;
+  border-color: #aeb5bf;
+  background: #fff;
+  color: #414752;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.hatebu-veil-explode {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  margin: 0 4px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  opacity: 0.55;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.hatebu-veil-explode[hidden] {
+  display: inline-flex !important;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.entry-comment-contents:hover .hatebu-veil-explode,
+.hatebu-veil-explode:focus-visible {
+  opacity: 1;
+}
+
+.hatebu-veil-explode:focus-visible {
+  outline: 2px solid #1260b0;
+  outline-offset: 2px;
+}
