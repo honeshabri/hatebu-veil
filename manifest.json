@@ -8,6 +8,7 @@
     "storage"
   ],
   "host_permissions": [
+    "https://b.hatena.ne.jp/entry",
     "https://b.hatena.ne.jp/entry/*",
     "https://opencode.ai/zen/v1/systemone"
   ],
@@ -26,6 +27,7 @@
   "content_scripts": [
     {
       "matches": [
+        "https://b.hatena.ne.jp/entry",
         "https://b.hatena.ne.jp/entry/*"
       ],
       "js": [

@@ -4,7 +4,10 @@ import { classifyBatch, MAX_BATCH, MAX_TEXT_LENGTH } from "../core/classifier.js
 
 const { isSensitive, defaultBoundary, normalizeBoundary } = globalThis.HatebuVeilPolicy;
 const CACHE_PREFIX = "cache:v1:";
-const HATENA_URL = "https://b.hatena.ne.jp/entry/*";
+const HATENA_URLS = [
+  "https://b.hatena.ne.jp/entry",
+  "https://b.hatena.ne.jp/entry/*"
+];
 const FEEDBACK_PREFIX = "feedback:v1:";
 const FEEDBACK_STATS_KEY = `${FEEDBACK_PREFIX}stats`;
 const { recordFeedback, normalizeStats, emptyStats } = globalThis.HatebuVeilFeedback;
@@ -18,7 +21,7 @@ function validSender(sender) {
   try {
     const url = new URL(sender.url);
     return url.protocol === "https:" && url.hostname === "b.hatena.ne.jp" &&
-      url.pathname.startsWith("/entry/");
+      (url.pathname === "/entry" || url.pathname.startsWith("/entry/"));
   } catch {
     return false;
   }
@@ -241,7 +244,7 @@ chrome.storage.onChanged.addListener((changes, area) => {
   void (async () => {
     if ("apiKey" in changes) await chrome.storage.local.set({ lastError: "" });
     const { enabled, hasKey, filterBoundary, showScores } = await getConfig();
-    const tabs = await chrome.tabs.query({ url: HATENA_URL });
+    const tabs = await chrome.tabs.query({ url: HATENA_URLS });
     const filterChanged = "filterBoundary" in changes;
     await Promise.allSettled(tabs.map(tab => chrome.tabs.sendMessage(tab.id, {
       type: "STATUS_CHANGED",

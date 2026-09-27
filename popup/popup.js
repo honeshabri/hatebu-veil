@@ -33,7 +33,7 @@
     try {
       const url = new URL(value);
       return url.protocol === "https:" && url.hostname === "b.hatena.ne.jp" &&
-        url.pathname.startsWith("/entry/") && url.pathname.length > "/entry/".length;
+        (url.pathname === "/entry" || url.pathname.startsWith("/entry/"));
     } catch {
       return false;
     }
