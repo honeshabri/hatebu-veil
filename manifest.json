@@ -27,8 +27,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://b.hatena.ne.jp/entry",
-        "https://b.hatena.ne.jp/entry/*"
+        "https://b.hatena.ne.jp/entry*"
       ],
       "js": [
         "core/filter-policy.js",

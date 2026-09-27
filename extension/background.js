@@ -4,10 +4,7 @@ import { classifyBatch, MAX_BATCH, MAX_TEXT_LENGTH } from "../core/classifier.js
 
 const { isSensitive, defaultBoundary, normalizeBoundary } = globalThis.HatebuVeilPolicy;
 const CACHE_PREFIX = "cache:v1:";
-const HATENA_URLS = [
-  "https://b.hatena.ne.jp/entry",
-  "https://b.hatena.ne.jp/entry/*"
-];
+const HATENA_URLS = "https://b.hatena.ne.jp/entry*";
 const FEEDBACK_PREFIX = "feedback:v1:";
 const FEEDBACK_STATS_KEY = `${FEEDBACK_PREFIX}stats`;
 const { recordFeedback, normalizeStats, emptyStats } = globalThis.HatebuVeilFeedback;

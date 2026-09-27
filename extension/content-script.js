@@ -1,4 +1,7 @@
 (() => {
+  const path = location.pathname;
+  if (path !== "/entry" && !path.startsWith("/entry/")) return;
+
   const adapter = globalThis.HatebuVeilAdapter;
   const { isSensitive, normalizeBoundary, scoreToLevel } = globalThis.HatebuVeilPolicy;
   const MAX_BATCH = 10;
